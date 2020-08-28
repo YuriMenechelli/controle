@@ -11,17 +11,24 @@ class Dashboard_model extends CI_Model{
 		}
 	}
 	public function getUserByPosDept(){
-		$this->db->select('users.id,
-							CONCAT (users.first_name,
-							" "'.',
-							users.last_name) as nome,
-							positions.position_name as cargo, 
-							departments.department_name as dept'
+
+		$id = $this->session->userdata('user_id');
+
+		$this->db->select('u.id,
+							CONCAT (u.first_name,
+							" "' . ',
+							u.last_name) as nome,
+							p.position_name as cargo, 
+							d.department_name as dept'
 		);
-		$this->db->from('users');
-		$this->db->join('positions','positions.id=users.id_position','left');
-		$this->db->join('departments','departments.id=positions.id_department','left');
-		$query = $this->db->get();
-		return $query->result();
+		$this->db->from('users u');
+		$this->db->join('positions p', 'p.id=u.id_position', 'inner');
+		$this->db->join('departments d', 'd.id=p.id_department', 'inner');
+		$this->db->where('u.id =', $id);
+
+		$query = $this->db->get()->row();
+		return $query;
+
 	}
+
 }

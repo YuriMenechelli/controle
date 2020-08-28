@@ -14,11 +14,12 @@ class Principal extends CI_Controller {
 
 
 	public function index(){
+
 		$data['titulo'] 	= 'Menu Principal';
 		$data['view'] 		= 'admin/principal/dashboard';
 		$data['users_dash'] = $this->ion_auth->users()->result();
-		$data['user_config']= $this->dashboard_model->getUserByPosDept();
 		$data['t_users']	= $this->dashboard_model->getTotal('users');
+		$data['user_config'] = $this->dashboard_model->getUserByPosDept();
 
 		$this->load->view('template/index',$data);
 	}

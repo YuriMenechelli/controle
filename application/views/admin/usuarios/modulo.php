@@ -56,8 +56,8 @@
 						</select>
 					</div>
 					<div class="col-lg-4">
-						<label for="dept">Departamento: </label>
-						<select name="dept" class="form-control">
+						<label for="name">Departamento: </label>
+						<select name="fones" class="form-control">
 							<?php if( $dados ) { ?>
 								<option value="0" <?= ($dados->active == 0 ? 'selected=""' : '') ?>>Não</option>
 								<option value="1" <?= ($dados->active == 1 ? 'selected=""' : '') ?>>Sim</option>

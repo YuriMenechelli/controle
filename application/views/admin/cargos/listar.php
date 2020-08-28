@@ -39,8 +39,8 @@
 					echo'<td class="text-center">'. ($row->ativo == 1 ? '<span class="label label-success">Ativo</span>' :
 							'<span class="label label-danger">Inativo</span>' ) .'</td>';
 					echo'<td class="text-right">';
-					echo '<a href="'.base_url('admin/positions/modulo/'. $row->id ).'" title="Editar" class="btn btn-primary"><i class="fa fa-pencil"></i></a>';
-					echo ' <a href="'.base_url('admin/positions/del/'. $row->id ).'" title="Apagar" class="btn btn-danger btn_apagar_registro"><i class="fa fa-trash"></i></a>';
+					echo '<a href="'.base_url('admin/positions/modulo/'. $row->id_cargo ).'" title="Editar" class="btn btn-primary"><i class="fa fa-pencil"></i></a>';
+					echo ' <a href="'.base_url('admin/positions/del/'. $row->id_cargo ).'" title="Apagar" class="btn btn-danger btn_apagar_registro"><i class="fa fa-trash"></i></a>';
 					echo'</td>';
 					echo'</tr>';
 				}

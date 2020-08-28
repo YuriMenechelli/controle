@@ -49,21 +49,21 @@
 			</a>
 			<div class="navbar-custom-menu">
 				<ul class="nav navbar-nav">
-					<li style="padding-right: 80px" class="dropdown user user-menu">
+					<li style="padding-right: 15px" class="dropdown user user-menu">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							<span class="hidden-xs ">Logout</span>
+							<span class="hidden-xs "><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</span>
 						</a>
 						<ul class="dropdown-menu">
 							<li class="user-header">
-								<?php foreach ($user_config as $u) {?>
-									<span class="user_config"><?= $u->nome.'<br/>'.
-										$u->cargo.' - '.$u->dept?></span>
-								<?php }?>
+								<span class="user_config"><?=
+									 $user_config->nome.'<br/>'.
+										$user_config->cargo.' - '.$user_config->dept?>
+								</span>
 							</li>
 							<!-- Menu Footer-->
 							<li class="user-footer">
 								<div style="padding-left: 95px">
-									<a href="<?php echo base_url('admin/login/sair') ?>" class="btn btn-danger btn-flat">Sair</a>
+									<a href="<?php echo base_url('admin/login/sair') ?>" class="btn btn-danger btn-flat"><i class="fa fa-power-off" aria-hidden="true"></i> Sair</a>
 								</div>
 							</li>
 						</ul>

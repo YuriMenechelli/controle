@@ -16,7 +16,7 @@ class Users extends CI_Controller{
 		$data['titulo'] = 'Lista de Usuários';
 		$data['view'] = 'admin/usuarios/listar';
 		$data['users'] = $this->users_model->getUsers();
-		//$data['users2'] 	= $this->ion_auth->users()->result();
+		$data['user_config']= $this->dashboard_model->getUserByPosDept();
 
 
 		$this->load->view('template/index', $data);
@@ -49,7 +49,7 @@ class Users extends CI_Controller{
 			$position = $this->users_model->getPositionsOnly();
 		}
 		$data['dados'] 	= $dados;
-		$data['cargo']= $cargos;
+		$data['cargo']	= $cargos;
 		$data['position']= $position;
 		$data['view'] 	= 'admin/usuarios/modulo';
 		$data['nav']	= array('titulo' => 'Lista de usuários', 'link' => 'admin/users');
@@ -61,7 +61,7 @@ class Users extends CI_Controller{
 
 	public function core(){
 
-		$this->form_validation->set_rules('nome', 'Nome','trim|required|min_length[5]');
+		$this->form_validation->set_rules('nome', 'Nome','trim|required');
 		$this->form_validation->set_rules('email', 'E-mail','trim|required|valid_email');
 
 		if ( !$this->input->post('id_user') ){
@@ -75,7 +75,9 @@ class Users extends CI_Controller{
 			$email 		= $this->input->post('email');
 			$additional_data = array(
 				'first_name' => $this->input->post('primeiro_nome'),
-				'last_name' =>	$this->input->post('ultimo_nome')
+				'last_name' =>	$this->input->post('ultimo_nome'),
+				'id_position' =>	$this->input->post('cargos'),
+				'id_phone' =>	$this->input->post('fones')
 			);
 
 			if ($this->input->post('id_user')){
@@ -88,6 +90,7 @@ class Users extends CI_Controller{
 				$data['email'] 		= $this->input->post('email');
 				$data['active'] 	= $this->input->post('ativo');
 				$data['id_position']= $this->input->post('cargos');
+				$data['id_phone'] 	= $this->input->post('fones');
 
 				if ($this->input->post('senha')){
 					$data['password'] = $this->input->post('senha');
