@@ -26,6 +26,7 @@
 				<thead>
 				<tr>
 					<th>CARGO</th>
+					<th>DEPARTAMENTO</th>
 					<th class="text-center">ATIVO</th>
 					<th class="text-right">OPÇÕES</th>
 				</tr>
@@ -36,6 +37,7 @@
 				foreach ($cargos as $row){
 					echo'<tr>';
 					echo'<td>'.$row->cargo.'</td>';
+					echo'<td>'.$row->dept.'</td>';
 					echo'<td class="text-center">'. ($row->ativo == 1 ? '<span class="label label-success">Ativo</span>' :
 							'<span class="label label-danger">Inativo</span>' ) .'</td>';
 					echo'<td class="text-right">';

@@ -39,8 +39,7 @@ class Positions extends CI_Controller {
 		$data['dados'] 	= $dados;
 		$data['view'] 	= 'admin/cargos/modulo';
 		$data['nav']	= array('titulo' => 'Lista de cargos', 'link' => 'admin/positions');
-		$data['depts']	= $this->positions_model->getPositions();
-		$data['depts2']	= $this->positions_model->getDepartments();
+		$data['depts']	= $this->positions_model->getDepartments();
 
 
 		$this->load->library('form_validation');
@@ -49,17 +48,17 @@ class Positions extends CI_Controller {
 
 	public function core(){
 
-		$this->form_validation->set_rules('nome', 'Nome','trim|required');
+		$this->form_validation->set_rules('cargos', 'Cargos','trim|required');
 
 		if ($this->form_validation->run() == TRUE){
 
-			$data['nome'] 			= $this->input->post('position_name');
-			$data['cargos'] 		= $this->input->post('cargos');
-			$data['ativo']			= $this->input->post('ativo');
+			$data['position_name']		= $this->input->post('cargos');
+			$data['id_department'] 		= $this->input->post('depts');
+			$data['active']				= $this->input->post('ativo');
 
-			if ($this->input->post('id_department')){
+			if ($this->input->post('depts')){
 
-				$data['id_department'] = $this->input->post('id_department');
+				$data['id_department'] = $this->input->post('depts');
 
 			}else {
 
@@ -97,10 +96,10 @@ class Positions extends CI_Controller {
 			}
 
 			$this->positions_model->doDelete($id_position);
-			redirect('admin/postions','refresh');
+			redirect('admin/positions','refresh');
 		} else {
 			setMsg('msgCadastro', 'Necessita selecionar um cargo para a exclusão!', 'erro');
-			redirect('admin/postions','refresh');
+			redirect('admin/positions','refresh');
 		}
 	}
 

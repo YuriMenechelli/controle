@@ -23,39 +23,27 @@ class Users extends CI_Controller{
 	}
 
 	public function modulo($id=NULL){
-
 		$dados = NULL;
-		$cargos = NULL;
-		$position = NULL;
 
 		if ($id){
+
 			$dados = $this->ion_auth->user($id)->row();
 			if ( !$dados ) {
-
 				setMsg('msgCadastro','Usuário não encontrado!','erro');
 				redirect('admin/users','refresh');
-
 			}
 			$data['titulo'] = 'Atualizar cadastro';
 		}else{
 			$data['titulo'] = 'Novo Cadastro';
 		}
 
-		if ($id){
-			$cargos = $this->users_model->getPositionsByUsers();
-		}
+		$data['dados'] 			= $dados;
+		$data['view'] 			= 'admin/usuarios/modulo';
+		$data['nav']			= array('titulo' => 'Lista de usuários', 'link' => 'admin/users');
+		$data['phones']			= $this->users_model->getPhones();
+		$data['cargos'] 		= $this->users_model->getPositions();
 
-		if ($id){
-			$position = $this->users_model->getPositionsOnly();
-		}
-		$data['dados'] 	= $dados;
-		$data['cargo']	= $cargos;
-		$data['position']= $position;
-		$data['view'] 	= 'admin/usuarios/modulo';
-		$data['nav']	= array('titulo' => 'Lista de usuários', 'link' => 'admin/users');
-
-
-		$this->load->library('form_validation');
+		$data['user_config']= $this->dashboard_model->getUserByPosDept();
 		$this->load->view('template/index', $data);
 	}
 
@@ -70,14 +58,18 @@ class Users extends CI_Controller{
 
 		if ($this->form_validation->run() === TRUE){
 
+			/*echo '<pre>';
+				var_dump($this->input->post());
+			echo '</pre>';*/
+
 			$username 	= $this->input->post('nome');
 			$password 	= $this->input->post('senha');
 			$email 		= $this->input->post('email');
 			$additional_data = array(
-				'first_name' => $this->input->post('primeiro_nome'),
-				'last_name' =>	$this->input->post('ultimo_nome'),
-				'id_position' =>	$this->input->post('cargos'),
-				'id_phone' =>	$this->input->post('fones')
+				'first_name' 	=> $this->input->post('primeiro_nome'),
+				'last_name' 	=> $this->input->post('ultimo_nome'),
+				'id_position' 	=> $this->input->post('cargos'),
+				'phone_id'		=> $this->input->post('fones')
 			);
 
 			if ($this->input->post('id_user')){
@@ -90,7 +82,7 @@ class Users extends CI_Controller{
 				$data['email'] 		= $this->input->post('email');
 				$data['active'] 	= $this->input->post('ativo');
 				$data['id_position']= $this->input->post('cargos');
-				$data['id_phone'] 	= $this->input->post('fones');
+				$data['phone_id'] 	= $this->input->post('fones');
 
 				if ($this->input->post('senha')){
 					$data['password'] = $this->input->post('senha');

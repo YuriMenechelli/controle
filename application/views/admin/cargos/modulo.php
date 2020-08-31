@@ -28,21 +28,19 @@
 				<div class="box-body">
 					<div class="col-lg-4">
 						<label for="name">Cargos:</label>
-						<input type="text" name="nome" class="form-control" value="<?= ( $dados != NULL ? $dados->position_name : set_value('cargo')) ?>"><br>
+						<input type="text" name="cargos" class="form-control" value="<?= ( $dados != NULL ? $dados->position_name : set_value('position_name')) ?>"><br>
 					</div>
 					<div class="col-lg-4">
 						<label for="name">Departamentos: </label>
-						<select name="cargos" class="form-control">
+						<select name="depts" class="form-control">
 							<option></option>
-							<?php if (( $depts ) && ($depts2)) { ?>
-								<?php foreach ($depts as $d ) { ?>
-									<option value="<?= $d->id_dept ?>" <?= ($d->id_posdept == $d->id_dept ? 'selected=""' : '') ?> ><?= $d->dept ?></option>
-								<?php } //END FOREACH?>
-							<?php } else { ?>
-								<?php foreach ($depts2 as $e ) { ?>
-									<option value="<?= $e->id ?>" ><?= $e->department_name ?></option>
-								<?php } //END FOREACH?>
-							<?php } //END IF ?>
+							<?php foreach ( $depts as $d ) { ?>
+								<?php if ( $dados ) { ?>
+									<option value="<?= $d->id ?>"<?= ($d->id == $dados->id ? 'selected=""' : '') ?>><?= $d->department_name?></option>
+								<?php }else { ?>
+									<option value="<?= $d->id?>"><?= $d->department_name ?></option>
+								<?php } ?>
+							<?php } ?>
 						</select>
 					</div>
 					<div class="col-lg-2">

@@ -30,10 +30,10 @@ class Positions_model extends CI_Model{
 		}
 	}
 
-	public function getPosDept($id_position=NULL){
+	public function getPosDept($id_department=NULL){
 
-		if ($id_position){
-			$this->db->where('id_department', $id_position);
+		if ($id_department){
+			$this->db->where('id_department', $id_department);
 			$query = $this->db->get('positions');
 
 			if ($query != NULL && $query->num_rows() >= 1){

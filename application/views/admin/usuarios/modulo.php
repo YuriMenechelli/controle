@@ -18,10 +18,11 @@
 <!-- Main content -->
 <section class="content">
 	<!-- Default box -->
-	<form action="<?php echo base_url('admin/users/core') ?>" method="post" accept-charset="utf-8" class="form-horizontal">
+	<form action="<?= base_url('admin/users/core') ?>" method="post" accept-charset="utf-8" class="form-horizontal">
 		<?php
 		errosValidation();
 		getMsg('msgCadastro');
+			/*var_dump();*/
 		?>
 		<div class="box">
 			<div class="box-header">
@@ -46,24 +47,25 @@
 						<label for="name">Cargo: </label>
 						<select name="cargos" class="form-control">
 							<option></option>
-							<?php foreach ($cargo as $c ) { ?>
-								<?php if( $cargo ) { ?>
-									<option value="<?= $c->id_cargo ?>" <?= ($c->id_cargo == $c->id_cargo_user ? 'selected=""' : '') ?> ><?= $c->cargo_nome ?></option>
-								<?php } else { ?>
-									<option value="<?= $c->id_cargo ?>" ><?= $c->cargo_nome ?></option>
-								<?php } //END IF ?>
-							<?php } //END FOREACH?>
+							<?php foreach ( $cargos as $c ) { ?>
+								<?php if ( $dados ) { ?>
+									<option value="<?= $c->id_cargo ?>"<?= ($c->id_cargo == $dados->id ? 'selected=""' : '') ?>><?= $c->cargo_nome.' - '.$c->dept_nome?></option>
+								<?php }else { ?>
+									<option value="<?= $c->id_cargo ?>"><?= $c->cargo_nome ?></option>
+								<?php } ?>
+							<?php } ?>
 						</select>
 					</div>
 					<div class="col-lg-4">
-						<label for="name">Departamento: </label>
+						<label for="name">Telefones: </label>
 						<select name="fones" class="form-control">
-							<?php if( $dados ) { ?>
-								<option value="0" <?= ($dados->active == 0 ? 'selected=""' : '') ?>>Não</option>
-								<option value="1" <?= ($dados->active == 1 ? 'selected=""' : '') ?>>Sim</option>
-							<?php } else { ?>
-								<option value="0">Não</option>
-								<option value="1" selected="">Sim</option>
+							<option></option>
+							<?php foreach ( $phones as $p ) { ?>
+								<?php if ( $dados ) { ?>
+									<option value="<?= $p->id ?>"<?= ($p->id == $dados->id ? 'selected=""' : '') ?>><?= $p->phone.' || '.$p->cellphone?></option>
+								<?php }else { ?>
+									<option value="<?= $p->id ?>"><?= $p->cellphone ?></option>
+								<?php } ?>
 							<?php } ?>
 						</select>
 					</div>

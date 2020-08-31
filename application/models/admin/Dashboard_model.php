@@ -10,6 +10,10 @@ class Dashboard_model extends CI_Model{
 			return $query->num_rows();
 		}
 	}
+
+
+
+
 	public function getUserByPosDept(){
 
 		$id = $this->session->userdata('user_id');
@@ -29,6 +33,22 @@ class Dashboard_model extends CI_Model{
 		$query = $this->db->get()->row();
 		return $query;
 
+	}
+
+	public function getPosDept(){
+		$this->db->select('p.id as id_cargo,
+							p.position_name as cargo,
+							p.active as ativo,
+							p.id_department as id_posdept,
+							p.dt_inc,
+							p.active,
+							d.id as id_dept,
+							d.department_name as dept');
+		$this->db->from('positions p');
+		$this->db->join('departments d','d.id = p.id_department','left');
+		$this->db->order_by('p.id','ASC');
+		$query = $this->db->get();
+		return $query->result();
 	}
 
 }

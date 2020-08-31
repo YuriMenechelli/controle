@@ -26,17 +26,23 @@ class Users_model extends CI_Model{
 		return $query->result();
 	}
 
-	public function getPositionsOnly(){
-		return $this->db->get('positions')->result();
+	public function getPositions(){
+
+		$this->db->select('p.id as id_cargo,
+						p.position_name as cargo_nome,
+						d.department_name as dept_nome');
+		$this->db->from('positions p');
+		$this->db->join('departments d','d.id=p.id_department','inner');
+		$this->db->where('p.active =', 1);
+		$query = $this->db->get();
+		return $query->result();
 	}
 
-	public function getPositionsByUsers(){
-		$this->db->select('users.id_position as id_cargo_user,
-							positions.id as id_cargo,
-							positions.position_name as cargo_nome');
-		$this->db->from('users');
-		$this->db->join('positions','positions.id = users.id_position','right');
-		$this->db->order_by('positions.id','desc');
-		return $this->db->get()->result();
+	public function getPhones(){
+
+		$this->db->where('active', 1);
+		$query = $this->db->get('phones');
+		return $query->result();
 	}
+
 }

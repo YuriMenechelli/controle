@@ -94,13 +94,23 @@
             			</span>
 					</a>
 					<ul class="treeview-menu">
-						<li><a href="<?php echo base_url('admin/users') ?>"><i class="fa fa-angle-double-right"></i> Usuários</a></li>
-						<li><a href="<?php echo base_url('admin/positions') ?>"><i class="fa fa-angle-double-right"></i> Cargos</a></li>
-						<li><a href="<?php echo base_url('admin/depts') ?>"><i class="fa fa-angle-double-right"></i> Departamentos</a></li>
+						<li><a href="<?php echo base_url('admin/users') ?>"><i class="fa fa-circle-o text-blue"></i> Usuários</a></li>
+						<li><a href="<?php echo base_url('admin/positions') ?>"><i class="fa fa-circle-o text-yellow"></i> Cargos</a></li>
+						<li><a href="<?php echo base_url('admin/depts') ?>"><i class="fa fa-circle-o text-green"></i> Departamentos</a></li>
 					</ul>
 				</li>
 				<li class="header">CONFIGURAÇÕES</li>
-				<li><a href="<?= base_url('admin/sobre')?>"><i class="fa fa-circle-o text-red"></i> <span>Sobre</span></a></li>
+				<li class="treeview">
+					<a href="#">
+						<i class="fa fa-wrench"></i> <span>Configurações</span>
+						<span class="pull-right-container">
+             				<i class="fa fa-angle-left pull-right"></i>
+            			</span>
+					</a>
+					<ul class="treeview-menu">
+						<li><a href="<?= base_url('admin/config')?>"><i class="fa fa-circle-o text-red"></i> <span>Sobre</span></a></li>
+					</ul>
+				</li>
 			</ul>
 		</section>
 		<!-- /.sidebar -->
@@ -117,9 +127,9 @@
 	<!-- /.content-wrapper -->
 	<footer class="main-footer">
 		<div class="pull-right hidden-xs">
-			<b>Version</b> 2.4.0
+			<b>Versão</b> 2.4.1
 		</div>
-		<strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io" target="_blank">Yuri Menechelli - Bootstrap</a>.</strong> All rights
+		<strong>Copyright &copy; 2020 <a href="https://adminlte.io" target="_blank">Yuri Menechelli - Bootstrap</a>.</strong> All rights
 		reserved.
 	</footer>
 	<div class="control-sidebar-bg"></div>
@@ -140,6 +150,8 @@
 <script src="<?php echo base_url('public/js/adminlte.min.js') ?>"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url('public/js/demo.js') ?>"></script>
+<!-- JS Principal do site -->
+<script src="<?php echo base_url('public/js/main.js') ?>"></script>
 <!--JQuery Mask-->
 <script src="<?php echo base_url('public/dist/jquery-mask/js/jquery.mask.min.js') ?>"></script>
 <!--JQuery UploadFile-->
