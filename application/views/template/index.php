@@ -99,7 +99,7 @@
 						<li><a href="<?php echo base_url('admin/depts') ?>"><i class="fa fa-circle-o text-green"></i> Departamentos</a></li>
 					</ul>
 				</li>
-				<li class="header">CONFIGURAÇÕES</li>
+				<li class="header">SISTEMA</li>
 				<li class="treeview">
 					<a href="#">
 						<i class="fa fa-wrench"></i> <span>Configurações</span>

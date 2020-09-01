@@ -10,7 +10,7 @@
 <section class="content">
 
 	<div class="row">
-		<div class="col-lg-3 col-xs-6" title="Cadastro de usuários">
+		<div class="col-lg-2 col-xs-6" title="Cadastro de usuários">
 			<!-- small box -->
 			<div class="small-box bg-yellow">
 				<div class="inner">
@@ -21,11 +21,14 @@
 				<div class="icon">
 					<i class="ion ion-ios-person"></i>
 				</div>
-				<a href="<?= base_url('admin/users')?>" class="small-box-footer">Visualizar usúarios <i class="fa fa-arrow-circle-right"></i></a>
+				<a href="<?= base_url('admin/users')?>" class="small-box-footer">
+					Visualizar usúarios
+					<i class="fa fa-arrow-circle-right"></i>
+				</a>
 			</div>
 		</div>
 
-		<div class="col-lg-3 col-xs-6" title="Cadastro de cargos">
+		<div class="col-lg-2 col-xs-6" title="Cadastro de cargos">
 			<!-- small box -->
 			<div class="small-box bg-blue">
 				<div class="inner">
