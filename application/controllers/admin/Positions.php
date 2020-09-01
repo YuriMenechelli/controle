@@ -90,8 +90,11 @@ class Positions extends CI_Controller {
 
 		if ($id_position){
 
-			if ($this->positions_model->getPosDept($id_position)){
-				setMsg('msgCadastro', 'Não é possível apagar esta categoria!'.'<br>'.'Este cargo esta vinculado a um departamento!', 'erro');
+			if ($this->positions_model->getPosUsers($id_position)){
+				setMsg('msgCadastro',
+					'Não é possível apagar esta categoria!'.'<br>'.
+					'Este cargo esta vinculado a um usuário!',
+					'erro');
 				redirect('admin/positions','refresh');
 			}
 

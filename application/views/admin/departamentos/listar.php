@@ -17,7 +17,7 @@
 
 			<div class="row margin-bottom-20">
 				<div class="col-md-12 text-right">
-					<a href="<?= base_url('admin/departments/modulo') ?>" title="Novo" class="btn btn-success"><i class="fa fa-plus-square"></i> Novo</a>
+					<a href="<?= base_url('admin/depts/modulo') ?>" title="Novo" class="btn btn-success"><i class="fa fa-plus-square"></i> Novo</a>
 				</div>
 			</div> <br>
 
@@ -36,8 +36,8 @@
 					echo'<tr>';
 					echo'<td>'.$row->department_name.'</td>';
 					echo'<td class="text-right">';
-					echo '<a href="'.base_url('admin/departments/modulo/'. $row->id ).'" title="Editar" class="btn btn-primary"><i class="fa fa-pencil"></i></a>';
-					echo ' <a href="'.base_url('admin/departments/del/'. $row->id ).'" title="Apagar" class="btn btn-danger btn_apagar_registro"><i class="fa fa-trash"></i></a>';
+					echo '<a href="'.base_url('admin/depts/modulo/'. $row->id ).'" title="Editar" class="btn btn-primary"><i class="fa fa-pencil"></i></a>';
+					echo ' <a href="'.base_url('admin/depts/del/'. $row->id ).'" title="Apagar" class="btn btn-danger btn_apagar_registro"><i class="fa fa-trash"></i></a>';
 					echo'</td>';
 					echo'</tr>';
 				}

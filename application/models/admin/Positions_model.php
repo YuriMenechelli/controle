@@ -24,17 +24,17 @@ class Positions_model extends CI_Model{
 
 		if ($id){
 			$this->db->where('id', $id);
-			$this->db->limit (1);
+			$this->db->limit(1);
 			$query = $this->db->get('positions');
 			return $query->row();
 		}
 	}
 
-	public function getPosDept($id_department=NULL){
+	public function getPosUsers($id_position=NULL){
 
-		if ($id_department){
-			$this->db->where('id_department', $id_department);
-			$query = $this->db->get('positions');
+		if ($id_position){
+			$this->db->where('id_position', $id_position);
+			$query = $this->db->get('users');
 
 			if ($query != NULL && $query->num_rows() >= 1){
 				return TRUE;
