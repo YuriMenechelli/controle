@@ -16,19 +16,16 @@ class Dashboard_model extends CI_Model{
 
 	public function getUserByPosDept(){
 
-		$id = $this->session->userdata('user_id');
+                $id = $this->session->userdata('user_id');
 
-		$this->db->select('u.id,
-							CONCAT (u.first_name,
-							" "' . ',
-							u.last_name) as nome,
-							p.position_name as cargo, 
-							d.department_name as dept'
-		);
-		$this->db->from('users u');
-		$this->db->join('positions p', 'p.id=u.id_position', 'inner');
-		$this->db->join('departments d', 'd.id=p.id_department', 'inner');
-		$this->db->where('u.id =', $id);
+                $this->db->select("u.id,
+                                        CONCAT(u.first_name, ' ', u.last_name) as nome,
+                                        p.position_name as cargo,
+                                        d.department_name as dept");
+                $this->db->from('users u');
+                $this->db->join('positions p', 'p.id=u.id_position', 'inner');
+                $this->db->join('departments d', 'd.id=p.id_department', 'inner');
+                $this->db->where('u.id =', $id);
 
 		$query = $this->db->get()->row();
 		return $query;
